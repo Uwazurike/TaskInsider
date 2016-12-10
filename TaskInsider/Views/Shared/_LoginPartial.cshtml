@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))        
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Menu
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Addresses", "Index", "Addresses")</li>
+                    <li>@Html.ActionLink("Address Types", "Index", "AddressTypes")</li>
+                    <li>@Html.ActionLink("Client Addresses", "Index", "ClientAddresses")</li>
+                    <li>@Html.ActionLink("Client Payment Methods", "Index", "ClientPaymentMethods")</li>
+                    <li>@Html.ActionLink("Client Payment Status", "Index", "ClientPaymentStatus")</li>
+                    <li>@Html.ActionLink("Client Profile Image", "Index", "ClientPhotoes")</li>
+                    <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
+                    <li>@Html.ActionLink("Insider Banking Details", "Index", "InsiderPayInfoes")</li>
+                    <li>@Html.ActionLink("Insider Pay Status", "Index", "InsiderPayStatus")</li>
+                    <li>@Html.ActionLink("Insider Profile Image", "Index", "InsiderPhotoes")</li>
+                    <li>@Html.ActionLink("Insiders", "Index", "Insiders")</li>
+                    <li>@Html.ActionLink("Insider Skills", "Index", "InsiderSkills")</li>
+                    <li>@Html.ActionLink("Payment methods", "Index", "PaymentMethods")</li>
+                    <li>@Html.ActionLink("Payments", "Index", "Payments")</li>
+                    <li>@Html.ActionLink("Request Status", "Index", "RequestStatus")</li>
+                    <li>@Html.ActionLink("Service Requests", "Index", "ServiceRequests")</li>
+                    <li>@Html.ActionLink("Services", "Index", "Services")</li>
+                    <li>@Html.ActionLink("Service Types", "Index", "ServiceTypes")</li>
+                    <li>@Html.ActionLink("Skills", "Index", "Skills")</li>
+                    <li>@Html.ActionLink("SkillLevels", "Index", "SkillLevels")</li>
+                </ul>
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    }
+
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
